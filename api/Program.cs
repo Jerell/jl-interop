@@ -28,4 +28,4 @@ using api;
 
 // app.Run();
 
-PipeClient.Main();
+await PipeClient.Main();

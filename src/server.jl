@@ -7,7 +7,7 @@ function start()
   println(placeholderfunc())
 
   errormonitor(@async begin
-    server = listen("testpipe")
+    server = listen(ip"::1", 2000)
     println("listening")
     while true
       sock = accept(server)
