@@ -1,7 +1,8 @@
 module CCSTwin
 
 function placeholderfunc()
-  return 1
+  println(1)
+  return "placeholder"
 end
 
 export placeholderfunc
