@@ -3,6 +3,9 @@ uuid = "2b1ad213-65ee-458c-847d-e139f9fe9548"
 authors = ["Jerell James <jerell1998@gmail.com> and contributors"]
 version = "1.0.0-DEV"
 
+[deps]
+ZMQ = "c2297ded-f4af-51ae-bb23-16f91089e4e1"
+
 [compat]
 julia = "1.8"
 

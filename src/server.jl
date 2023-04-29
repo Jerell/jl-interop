@@ -1,21 +1,30 @@
 module Server
+
 include("CCSTwin.jl")
 using .CCSTwin
-using Sockets
+using ZMQ
 
 function start()
-  println(placeholderfunc())
+  context = Context()
+  socket = Socket(context, REP)
+  ZMQ.bind(socket, "tcp://*:5555")
 
-  errormonitor(@async begin
-    server = listen(ip"::1", 2000)
-    println("listening")
-    while true
-      sock = accept(server)
-      @async while isopen(sock)
-        write(sock, readline(sock, keep=true))
-      end
-    end
-  end)
+  while true
+    # Wait for next request from client
+    message = String(ZMQ.recv(socket))
+    println("Received request: $message")
+
+    # Do some 'work'
+    sleep(1)
+
+    # Send reply back to client
+    ZMQ.send(socket, "World")
+  end
+
+  println("stopping")
+  ZMQ.close(socket)
+  ZMQ.close(context)
 end
+
 
 end
