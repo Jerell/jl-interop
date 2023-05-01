@@ -18,7 +18,7 @@ function start()
     sleep(1)
 
     # Send reply back to client
-    ZMQ.send(socket, "World")
+    ZMQ.send(socket, placeholderfunc())
   end
 
   println("stopping")

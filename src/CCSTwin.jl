@@ -2,7 +2,7 @@ module CCSTwin
 
 function placeholderfunc()
   println(1)
-  return "placeholder"
+  return "World"
 end
 
 export placeholderfunc
