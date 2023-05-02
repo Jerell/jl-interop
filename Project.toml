@@ -4,8 +4,8 @@ authors = ["Jerell James <jerell1998@gmail.com> and contributors"]
 version = "1.0.0-DEV"
 
 [deps]
+Ai4EComponentLib = "9901752a-13b3-47c7-8fb4-ce17182539d9"
 Interpolations = "a98d9a8b-a2ab-59e6-89dd-64a1c18fca59"
-Modia = "cb905087-75eb-5f27-8515-1ce0ec8e839e"
 SignalTables = "3201582d-3078-4276-ba5d-0a1254d79d7c"
 SignalTablesInterface_PyPlot = "a24218ac-d749-4e8e-be24-21e617b5c7ba"
 ZMQ = "c2297ded-f4af-51ae-bb23-16f91089e4e1"
