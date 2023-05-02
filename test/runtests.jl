@@ -1,6 +1,6 @@
-using CCSTwin
+include("../src/CCSTwin.jl")
 using Test
 
 @testset "CCSTwin.jl" begin
-    @test placeholderfunc() == 1
+    @test Main.CCSTwin.placeholderfunc() == "World"
 end
