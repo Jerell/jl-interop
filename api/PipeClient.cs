@@ -19,6 +19,7 @@ public class Client
         string str = requester.ReceiveFrameString();
         Console.WriteLine("Received World {0}", requestNumber);
       }
+      requester.Close();
     }
   }
 }
