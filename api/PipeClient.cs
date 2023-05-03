@@ -4,9 +4,10 @@ using NetMQ;
 namespace api;
 public class Client
 {
-  public static void Main()
+  public static string Main()
   {
     Console.WriteLine("Connecting to hello world server…");
+    string str = "";
     using (var requester = new RequestSocket())
     {
       requester.Connect("tcp://localhost:5555");
@@ -16,10 +17,11 @@ public class Client
       {
         Console.WriteLine("Sending Hello {0}...", requestNumber);
         requester.SendFrame("Hello");
-        string str = requester.ReceiveFrameString();
+        str = requester.ReceiveFrameString();
         Console.WriteLine("Received World {0}", requestNumber);
       }
       requester.Close();
     }
+    return str;
   }
 }
