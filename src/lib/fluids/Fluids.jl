@@ -2,18 +2,11 @@ module Fluids
 
 using CoolProp, Unitful
 
-const Pressure = Quantity{Float64,dimension(u"bar"),typeof(u"bar")}
-const Temperature = Quantity{Float64,dimension(u"°C"),typeof(u"°C")}
-const MassFlowrate = Quantity{Float64,dimension(u"kg/s"),typeof(u"kg/s")}
-const Viscosity = Quantity{Float64,dimension(u"m^3 / kg"),typeof(u"m^3 / kg")}
-const Density = Quantity{Float64,dimension(u"kg/m^3"),typeof(u"kg/m^3")}
-const MassSpecificEnthalpy = Quantity{Float64,dimension(u"J/kg"),typeof(u"J/kg")}
-const MassSpecificEntropy = Quantity{Float64,dimension(u"J/kg/K"),typeof(u"J/kg/K")}
+include("PhysicalQuantities.jl")
+include("Compositions.jl")
 
-compositions = Dict(
-    "96%CO2" => "REFPROP::CarbonDioxide[0.969696970]&Hydrogen[0.010101010]&Nitrogen[0.010101010]&Argon[0.009090909]&CarbonMonoxide[0.001010101]",
-    "100%CO2" => "CarbonDioxide[1.0]"
-)
+using .PhysicalQuantities
+using .Compositions
 
 struct Fluid
     pressure::Pressure
@@ -50,15 +43,6 @@ struct Fluid
     )
 end
 
-
-p = 10.0u"bar"
-p2 = 8.0u"bar"
-t = 20.0u"°C"
-
-a = Fluid(p, t)
-println(a)
-
-b = Fluid(p2, a.massSpecificEnthalpy)
-println(b)
+export Fluid
 
 end
