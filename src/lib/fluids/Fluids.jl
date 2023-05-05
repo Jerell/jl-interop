@@ -25,21 +25,21 @@ struct Fluid
     Fluid(p::Pressure, t::Temperature) = new(
         p,
         t,
-        PropsSI("V", "P", p, "T", t, compositions["100%CO2"]),
-        PropsSI("D", "P", p, "T", t, compositions["100%CO2"]),
-        PropsSI("H", "P", p, "T", t, compositions["100%CO2"]),
-        PropsSI("S", "P", p, "T", t, compositions["100%CO2"]),
-        PropsSI("Phase", "P", p, "T", t, compositions["100%CO2"]),
+        PropsSI("V", "P", p, "T", t, compositions.co2pure),
+        PropsSI("D", "P", p, "T", t, compositions.co2pure),
+        PropsSI("H", "P", p, "T", t, compositions.co2pure),
+        PropsSI("S", "P", p, "T", t, compositions.co2pure),
+        PropsSI("Phase", "P", p, "T", t, compositions.co2pure),
     )
 
     Fluid(p::Pressure, h::MassSpecificEnthalpy) = new(
         p,
-        PropsSI("T", "P", p, "H", h, compositions["100%CO2"]),
-        PropsSI("V", "P", p, "H", h, compositions["100%CO2"]),
-        PropsSI("D", "P", p, "H", h, compositions["100%CO2"]),
-        PropsSI("H", "P", p, "H", h, compositions["100%CO2"]),
-        PropsSI("S", "P", p, "H", h, compositions["100%CO2"]),
-        PropsSI("Phase", "P", p, "H", h, compositions["100%CO2"]),
+        PropsSI("T", "P", p, "H", h, compositions.co2pure),
+        PropsSI("V", "P", p, "H", h, compositions.co2pure),
+        PropsSI("D", "P", p, "H", h, compositions.co2pure),
+        PropsSI("H", "P", p, "H", h, compositions.co2pure),
+        PropsSI("S", "P", p, "H", h, compositions.co2pure),
+        PropsSI("Phase", "P", p, "H", h, compositions.co2pure),
     )
 end
 
