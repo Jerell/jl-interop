@@ -15,6 +15,9 @@ end
     a = Main.Fluids.Fluid(p, t)
     b = Main.Fluids.Fluid(p2, a.massSpecificEnthalpy)
 
+    println(a)
+    println(b)
+
     @test a.pressure > b.pressure
     @test a.temperature > b.temperature
 end
