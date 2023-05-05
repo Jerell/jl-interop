@@ -10,16 +10,19 @@ const Density = Quantity{Float64,dimension(u"kg/m^3"),typeof(u"kg/m^3")}
 const MassSpecificEnthalpy = Quantity{Float64,dimension(u"J/kg"),typeof(u"J/kg")}
 const MassSpecificEntropy = Quantity{Float64,dimension(u"J/kg/K"),typeof(u"J/kg/K")}
 
-compositions = Dict("96%CO2" => "REFPROP::CarbonDioxide[0.969696970]&Hydrogen[0.010101010]&Nitrogen[0.010101010]&Argon[0.009090909]&CarbonMonoxide[0.001010101]", "100%CO2" => "CarbonDioxide[1.0]")
+compositions = Dict(
+    "96%CO2" => "REFPROP::CarbonDioxide[0.969696970]&Hydrogen[0.010101010]&Nitrogen[0.010101010]&Argon[0.009090909]&CarbonMonoxide[0.001010101]",
+    "100%CO2" => "CarbonDioxide[1.0]"
+)
 
 struct Fluid
-    pressure::Quantity{Float64,dimension(u"bar"),typeof(u"bar")}
-    temperature::Quantity{Float64,dimension(u"K"),typeof(u"K")}
-    # # massFlowrate::Quantity{Float64,dimension(u"kg/s"),typeof(u"kg/s")}
-    viscosity::Quantity{Float64,dimension(u"m^3 / kg"),typeof(u"m^3 / kg")}
-    density::Quantity{Float64,dimension(u"kg/m^3"),typeof(u"kg/m^3")}
-    massSpecificEnthalpy::Quantity{Float64,dimension(u"J/kg"),typeof(u"J/kg")}
-    massSpecificEntropy::Quantity{Float64,dimension(u"J/kg/K"),typeof(u"J/kg/K")}
+    pressure::Pressure
+    temperature::Temperature
+    # # massFlowrate::MassFlowrate
+    viscosity::Viscosity
+    density::Density
+    massSpecificEnthalpy::MassSpecificEnthalpy
+    massSpecificEntropy::MassSpecificEntropy
     phase::Float64
 
     # The equations of state are based on T and ρ as state variables,
