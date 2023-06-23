@@ -4,7 +4,7 @@ include("CCSTwin.jl")
 using .CCSTwin
 using ZMQ
 
-function start()
+function start(process_message::Function)
     context = Context()
     socket = Socket(context, REP)
     ZMQ.bind(socket, "tcp://*:5555")
@@ -14,11 +14,10 @@ function start()
         message = String(ZMQ.recv(socket))
         println("Received request: $message")
 
-        # Do some 'work'
-        sleep(1)
-
+        result = process_message(message)
+        println("result: $result")
         # Send reply back to client
-        ZMQ.send(socket, placeholderfunc())
+        ZMQ.send(socket, result)
     end
 
     println("stopping")
